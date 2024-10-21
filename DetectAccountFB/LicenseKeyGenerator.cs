@@ -19,7 +19,7 @@ namespace DetectAccountFB
 
             bios = GetBios() ?? throw new Exception("Không thể lấy BIOS");
             processorId = GetProcessorId() ?? throw new Exception("Không thể lấy BIOS");
-            hwid = bios + "-" + processorId;
+            hwid = bios + "_-" + processorId;
             licenseKey = GenerateKey(hwid) ?? throw new Exception("Không thể lấy license key");
         }
 

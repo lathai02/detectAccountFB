@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             TxtBoxLicensekey = new TextBox();
-            BtnGenerateKey = new Button();
             btnSend = new Button();
             txtDesktopName = new TextBox();
             label1 = new Label();
@@ -44,19 +43,9 @@
             TxtBoxLicensekey.Size = new Size(281, 23);
             TxtBoxLicensekey.TabIndex = 0;
             // 
-            // BtnGenerateKey
-            // 
-            BtnGenerateKey.Location = new Point(182, 248);
-            BtnGenerateKey.Name = "BtnGenerateKey";
-            BtnGenerateKey.Size = new Size(159, 23);
-            BtnGenerateKey.TabIndex = 1;
-            BtnGenerateKey.Text = "Generate licence key";
-            BtnGenerateKey.UseVisualStyleBackColor = true;
-            BtnGenerateKey.Click += BtnGenerateKey_Click;
-            // 
             // btnSend
             // 
-            btnSend.Location = new Point(378, 248);
+            btnSend.Location = new Point(275, 193);
             btnSend.Name = "btnSend";
             btnSend.Size = new Size(75, 23);
             btnSend.TabIndex = 2;
@@ -100,7 +89,6 @@
             Controls.Add(label1);
             Controls.Add(txtDesktopName);
             Controls.Add(btnSend);
-            Controls.Add(BtnGenerateKey);
             Controls.Add(TxtBoxLicensekey);
             Name = "Form1";
             Text = "Form1";
@@ -112,7 +100,6 @@
         #endregion
 
         private TextBox TxtBoxLicensekey;
-        private Button BtnGenerateKey;
         private Button btnSend;
         private TextBox txtDesktopName;
         private Label label1;

@@ -5,37 +5,28 @@ namespace DetectAccountFB
 {
     public partial class Form1 : Form
     {
+        private LicenseKeyGenerator licenseKeyGenerator;
         public Form1()
         {
             InitializeComponent();
+            licenseKeyGenerator = new LicenseKeyGenerator();
         }
 
         private void BtnGenerateKey_Click(object sender, EventArgs e)
         {
-            try
-            {
-                LicenseKeyGenerator licenseKeyGenerator = new LicenseKeyGenerator();
-                licenseKeyGenerator.GetLicenseKey();
-                string? key = licenseKeyGenerator.licenseKey;
-                TxtBoxLicensekey.Text = key;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+
         }
 
         private async void btnSend_Click(object sender, EventArgs e)
         {
             try
             {
-                LicenseKeyGenerator licenseKeyGenerator = new LicenseKeyGenerator();
-                var bios = licenseKeyGenerator.bios;
-                var processorId = licenseKeyGenerator.processorId;
+                var bios = licenseKeyGenerator.bios + "CJSE8235NCXFX";
+                var processorId = licenseKeyGenerator.processorId + "DIZXB2912FYEH";
                 var userName = txtDesktopName.Text;
                 var licensekey = TxtBoxLicensekey.Text;
 
-                string licenseKeyListApiFomarted = string.Format(Constants.licenseKeyListApi, userName, licensekey);
+                string licenseKeyListApiFomarted = string.Format(Constants.licenseKeyListApi, userName, licensekey, bios, processorId);
 
                 using (HttpClient client = new HttpClient())
                 {
@@ -63,6 +54,11 @@ namespace DetectAccountFB
             {
                 string deviceName = Environment.MachineName;
                 txtDesktopName.Text = deviceName;
+
+                licenseKeyGenerator = new LicenseKeyGenerator();
+                licenseKeyGenerator.GetLicenseKey();
+                string? key = licenseKeyGenerator.licenseKey;
+                TxtBoxLicensekey.Text = key;
             }
             catch (Exception ex)
             {
