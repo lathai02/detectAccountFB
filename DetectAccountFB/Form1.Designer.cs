@@ -68,6 +68,7 @@
             // 
             txtDesktopName.Location = new Point(182, 64);
             txtDesktopName.Name = "txtDesktopName";
+            txtDesktopName.ReadOnly = true;
             txtDesktopName.Size = new Size(281, 23);
             txtDesktopName.TabIndex = 3;
             // 

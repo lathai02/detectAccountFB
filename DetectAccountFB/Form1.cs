@@ -29,12 +29,13 @@ namespace DetectAccountFB
         {
             try
             {
-                string licenseKeyListApi = "https://script.google.com/macros/s/AKfycbxb9zpsEYxaPFEf9MDxHiXY8xpqYhMBlxXIKfwYzlgWN3EXPFTjFOhgqAUqcFOGg9Tx/exec?userName={0}&licenseKey={1}";
-
+                LicenseKeyGenerator licenseKeyGenerator = new LicenseKeyGenerator();
+                var bios = licenseKeyGenerator.bios;
+                var processorId = licenseKeyGenerator.processorId;
                 var userName = txtDesktopName.Text;
                 var licensekey = TxtBoxLicensekey.Text;
 
-                string licenseKeyListApiFomarted = string.Format("https://script.google.com/macros/s/AKfycbxb9zpsEYxaPFEf9MDxHiXY8xpqYhMBlxXIKfwYzlgWN3EXPFTjFOhgqAUqcFOGg9Tx/exec?userName={0}&licenseKey={1}", userName, licensekey);
+                string licenseKeyListApiFomarted = string.Format(Constants.licenseKeyListApi, userName, licensekey);
 
                 using (HttpClient client = new HttpClient())
                 {
@@ -42,7 +43,7 @@ namespace DetectAccountFB
                     response.EnsureSuccessStatusCode();
 
                     string responseBody = await response.Content.ReadAsStringAsync();
-                    MessageBox.Show(responseBody); // Hiển thị kết quả nhận được từ server
+                    MessageBox.Show(responseBody);
                 }
             }
             catch (Exception ex)

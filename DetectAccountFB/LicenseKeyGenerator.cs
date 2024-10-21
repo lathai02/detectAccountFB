@@ -11,12 +11,14 @@ namespace DetectAccountFB
     public class LicenseKeyGenerator
     {
         public string? licenseKey { get; set; }
+        public string? bios { get; set; }
+        public string? processorId { get; set; }
         public void GetLicenseKey()
         {
             string? hwid = null;
 
-            string bios = GetBios() ?? throw new Exception("Không thể lấy BIOS");
-            string processorId = GetProcessorId() ?? throw new Exception("Không thể lấy BIOS");
+            bios = GetBios() ?? throw new Exception("Không thể lấy BIOS");
+            processorId = GetProcessorId() ?? throw new Exception("Không thể lấy BIOS");
             hwid = bios + "-" + processorId;
             licenseKey = GenerateKey(hwid) ?? throw new Exception("Không thể lấy license key");
         }
